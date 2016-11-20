@@ -5,6 +5,67 @@
 		<link rel="stylesheet" href="css/index.css" />
 		<script src="js/jquery-1.7.2.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/index_qiku.js" type="text/javascript" charset="utf-8"></script>
+<!--		<script type="text/javascript">
+			$(function(){
+//				1.全局变量
+				var curIndex=0;  //当前index
+				imgLen = $(".img_list li").length;  //图片总数
+//				2.自动切换的定时器处理,设置2.5秒变换一次
+				var autoChange = setInterval(function(){
+					if(curIndex < imgLen-1){
+						curIndex　++;
+					}
+					else{
+						curIndex = 0;
+					}
+					//调用变换处理函数
+					changeTo(curIndex);
+				},2500);
+//				3.中间那6个li按钮绑定事件处理
+				$(".index_list li a").find("img").each(function(item){
+					$(this).hover(function(){
+						clearInterval(autoChange);
+						changeTo(item);
+						curIndex = item;
+					},function(){
+						autoChangeAgain();
+					});
+				});
+				
+				//清除定时器时候的重置定时器--封装
+				function autoChangeAgain(){ 
+				    autoChange = setInterval(function(){ 
+				    if(curIndex < imgLen-1){ 
+				        curIndex ++;
+				    }else{ 
+				        curIndex = 0;
+				    }
+				    //调用变换处理函数
+				    changeTo(curIndex); 
+				    },2500);
+				}
+				
+				function changeTo(num){  //图片切换的处理函数
+					var toLeft = num * 965;  //每传入一个图片序号，则按理进行toLeft
+					$(".img_list").animate({
+						left: "-" + toLeft   + "px";
+					},500);
+					$(".index_list").eq(num).addClass("onselect").siblings("li").removeClass("onselect");
+				}
+								
+			});
+		</script>-->
+		<!--<script type="text/javascript">
+			$(function(){
+				$(".product_show ul li").hover(function(){
+					$(this).animate({
+						width: "90%";
+						height: "90%";
+						border: 4px pink solid;
+					},1000);
+				});
+			});
+		</script>-->
 		<title>奇酷首页</title>
 	</head>
 	<body>
